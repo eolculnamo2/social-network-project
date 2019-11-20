@@ -10,6 +10,8 @@ environment:
 dependencies:
   angular: ^5.3.0
   angular_components: ^0.13.0
+  sass_builder: ^2.0.0
+  angular_router: ^2.0.0-alpha
 
 dev_dependencies:
   angular_test: ^2.3.0
@@ -17,5 +19,4 @@ dev_dependencies:
   build_test: ^0.10.8
   build_web_compilers: ^2.3.0
   pedantic: ^1.8.0
-  angular_router: ^2.0.0-alpha
   test: ^1.6.0
