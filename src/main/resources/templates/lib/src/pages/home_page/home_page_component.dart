@@ -16,5 +16,9 @@ import '../../routes.dart';
   exports: [RoutePaths, Routes],
 )
 class HomePageComponent {
-  String testVar = "testVar";
+  bool showLogin = true;
+
+  void toggleLogin(bool goToLogin) {
+    showLogin = goToLogin;
+  }
 }

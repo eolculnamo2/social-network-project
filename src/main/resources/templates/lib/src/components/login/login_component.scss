@@ -1,5 +1,5 @@
 .login-wrapper {
-  width: 700px;
+  width: 400px;
   padding: 1em;
   border: 1px solid #999;
   border-radius: 3px;
@@ -14,6 +14,18 @@
 
 .login-body {
   margin-top: 1em;
+}
+
+.login-btn {
+  background-color: #4285f4;
+  color: white;
+  width: 48%;
+}
+
+.register-btn {
+  background-color: #f4a856;
+  color: white;
+  width: 47%;
 }
 
 material-input {
