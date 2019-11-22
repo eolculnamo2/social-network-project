@@ -13,6 +13,11 @@ import 'src/routes.dart';
   directives: [routerDirectives, HeaderComponent],
   exports: [RoutePaths, Routes],
 )
-class AppComponent {
-  // Nothing here yet. All logic is in TodoListComponent.
-}
+class AppComponent {}
+
+// ANGULAR NOTES:
+
+// Directives:
+// a directive is a function that executes whenever the Angular compiler finds it in the DOM.
+// PROVIDERS
+// A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency.

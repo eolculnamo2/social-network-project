@@ -8,8 +8,7 @@ public class PagesController {
 
   @GetMapping("/")
   public String spaRoutes() {
-    System.out.println("testing..");
-    return "web/index";
+    return "../static/build/index";
   }
 
 }

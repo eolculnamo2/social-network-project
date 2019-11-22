@@ -1,0 +1,3 @@
+class UserResponseDTO {
+  String username;
+}
