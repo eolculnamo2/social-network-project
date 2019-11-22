@@ -1,0 +1,13 @@
+<div class="login-wrapper">
+  <div class="login-title">Register</div>
+  <div class="login-body">
+    <material-input autofocus floatingLabel [(ngModel)]="username" label="Username">
+    </material-input>
+    <material-input floatingLabel [(ngModel)]="password" label="Password" type="password">
+    </material-input>
+    <material-input floatingLabel [(ngModel)]="confirmPassword" label="Confirm Password" type="password">
+    </material-input>
+    <material-button class="navigate-btn" (click)="returnToLogin()">Back</material-button>
+    <material-button class="primary-btn" (click)="register()">Register</material-button>
+  </div>
+</div>

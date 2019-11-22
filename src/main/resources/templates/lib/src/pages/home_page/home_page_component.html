@@ -2,3 +2,4 @@
 
 <!-- Login/Register Components -->
 <login-form *ngIf="showLogin" (goToRegister)="toggleLogin($event)"></login-form>
+<register-form *ngIf="!showLogin" (goToLogin)="toggleLogin($event)"></register-form>

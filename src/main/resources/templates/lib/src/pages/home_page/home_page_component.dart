@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
+import 'package:templates/src/components/register/register_component.dart';
 import '../../components/login/login_component.dart';
 import '../../routes.dart';
 
@@ -9,7 +10,7 @@ import '../../routes.dart';
   selector: 'home-page',
   templateUrl: 'home_page_component.html',
   styleUrls: ['home_page_component.css'],
-  directives: [coreDirectives, RouterOutlet, LoginComponent],
+  directives: [coreDirectives, RouterOutlet, LoginComponent, RegisterComponent],
   // providers: [
   //   ClassProvider(DialogService),
   // ],
