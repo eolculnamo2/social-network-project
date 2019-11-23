@@ -12,25 +12,36 @@ import 'package:templates/src/store/user_store.dart';
     directives: [MaterialInputComponent, MaterialButtonBase, MaterialButtonComponent, materialInputDirectives],
     providers: [UserStore])
 class LoginComponent {
-  String username;
-  String password;
-  UserStore userStore;
+  String username = '';
+  String password = '';
+  UserStore _userStore;
 
   // https://angulardart.dev/guide/template-syntax#custom-events
+
+  //// **** CONSIDER DOING DART TUTORIALS AND LEARNING THE LANGUAGE WELL **** \\\\
   final goToRegisterStream = StreamController<bool>();
   @Output()
   Stream<bool> get goToRegister => goToRegisterStream.stream;
 
   LoginComponent(UserStore userStore) {
-    this.userStore = userStore;
+    this._userStore = userStore;
   }
 
   void login() async {
-    print("payload before");
+    if (username.length == 0 || password.length == 0) {
+      print("username and password required");
+      return;
+    }
+
     var payload = {"username": username, "password": password};
-    var res = await http.post("/authenticate/login", headers: {"Accept": "application/json"}, body: payload);
+    var res = await http.post("/authenticate/login",
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: json.encode(payload));
     var resJson = json.decode(res.body);
-    userStore.username = resJson["username"];
+    _userStore.setUsername(resJson["username"]);
   }
 
   void register() => goToRegisterStream.add(false);

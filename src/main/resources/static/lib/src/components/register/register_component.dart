@@ -1,5 +1,6 @@
 import 'dart:async';
-import "dart:html";
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
 import 'package:templates/src/store/user_store.dart';
@@ -24,9 +25,23 @@ class RegisterComponent {
     this._userStore = userStore;
   }
 
-  void register() {
+  void register() async {
     print('register callled');
-    print(_userStore.username);
+
+    var res = await http.post('/authenticate/register',
+        body: json.encode({
+          'username': username,
+          'password': password,
+          'confirmPassword': confirmPassword,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+        });
+    var resJson = json.decode(res.body);
+    _userStore.setUsername(resJson['username']);
+
+    print(_userStore.getUsername());
   }
 
   void returnToLogin() {

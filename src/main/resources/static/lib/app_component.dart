@@ -21,3 +21,7 @@ class AppComponent {}
 // a directive is a function that executes whenever the Angular compiler finds it in the DOM.
 // PROVIDERS
 // A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency.
+
+// DART NOTES
+// ?. ?? ??=
+// type checking: if(x is int)
