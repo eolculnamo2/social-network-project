@@ -1,5 +1,6 @@
 <!-- Explanational Section -->
 
 <!-- Login/Register Components -->
+<a [routerLink]="RoutePaths.wall.toUrl()">Go To Wall</a>
 <login-form *ngIf="showLogin" (goToRegister)="toggleLogin($event)"></login-form>
 <register-form *ngIf="!showLogin" (goToLogin)="toggleLogin($event)"></register-form>

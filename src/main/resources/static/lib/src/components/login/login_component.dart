@@ -17,8 +17,6 @@ class LoginComponent {
   UserStore _userStore;
 
   // https://angulardart.dev/guide/template-syntax#custom-events
-
-  //// **** CONSIDER DOING DART TUTORIALS AND LEARNING THE LANGUAGE WELL **** \\\\
   final goToRegisterStream = StreamController<bool>();
   @Output()
   Stream<bool> get goToRegister => goToRegisterStream.stream;

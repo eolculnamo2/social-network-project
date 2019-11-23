@@ -10,7 +10,7 @@ import '../../routes.dart';
   selector: 'home-page',
   templateUrl: 'home_page_component.html',
   styleUrls: ['home_page_component.css'],
-  directives: [coreDirectives, RouterOutlet, LoginComponent, RegisterComponent],
+  directives: [coreDirectives, routerDirectives, RouterOutlet, LoginComponent, RegisterComponent],
   // providers: [
   //   ClassProvider(DialogService),
   // ],
