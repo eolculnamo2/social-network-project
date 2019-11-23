@@ -1,7 +1,6 @@
 class UserStore {
   static final UserStore _userStore = UserStore._internal();
-  String _username;
-  String _photoName;
+  String username;
 
   // Singleton
   // https://stackoverflow.com/questions/12649573/how-do-you-build-a-singleton-in-dart
@@ -10,12 +9,4 @@ class UserStore {
     return _userStore;
   }
   UserStore._internal();
-
-  String getUsername() {
-    return _username;
-  }
-
-  void setUsername(String username) {
-    _username = username;
-  }
 }

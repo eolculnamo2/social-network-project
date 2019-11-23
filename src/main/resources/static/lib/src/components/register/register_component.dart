@@ -26,7 +26,7 @@ class RegisterComponent {
 
   void register() {
     print('register callled');
-    print(_userStore.getUsername());
+    print(_userStore.username);
   }
 
   void returnToLogin() {

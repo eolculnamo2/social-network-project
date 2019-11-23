@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
-import 'package:templates/src/dto/user_response_dto.dart';
 import 'package:templates/src/store/user_store.dart';
 
 @Component(
@@ -15,7 +14,7 @@ import 'package:templates/src/store/user_store.dart';
 class LoginComponent {
   String username;
   String password;
-  UserStore _userStore;
+  UserStore userStore;
 
   // https://angulardart.dev/guide/template-syntax#custom-events
   final goToRegisterStream = StreamController<bool>();
@@ -23,17 +22,16 @@ class LoginComponent {
   Stream<bool> get goToRegister => goToRegisterStream.stream;
 
   LoginComponent(UserStore userStore) {
-    this._userStore = userStore;
+    this.userStore = userStore;
   }
 
   void login() async {
-    var payload = {username: username, password: password};
-    var res = await http.post("/authenticate/login", body: payload);
-    UserResponseDTO resJson = json.decode(res.body);
-    _userStore.setUsername(resJson.username);
+    print("payload before");
+    var payload = {"username": username, "password": password};
+    var res = await http.post("/authenticate/login", headers: {"Accept": "application/json"}, body: payload);
+    var resJson = json.decode(res.body);
+    userStore.username = resJson["username"];
   }
 
-  void register() {
-    goToRegisterStream.add(false);
-  }
+  void register() => goToRegisterStream.add(false);
 }
