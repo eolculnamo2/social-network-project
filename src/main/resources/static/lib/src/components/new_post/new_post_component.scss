@@ -1,0 +1,28 @@
+.new-post-wrap {
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .2);
+  margin: auto;
+  max-width: 50%;
+  border: 1px solid #dadada;
+}
+
+.new-post-textarea {
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #dadada;
+  outline: none;
+  height: 75px;
+}
+
+.new-post-header {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+
+.new-post-submit-btn {
+  background-color: #4285f4;
+  color: white;
+  margin-top: .5em;
+  font-size: .75em;
+}

@@ -20,4 +20,8 @@ import 'package:angular_components/angular_components.dart';
 )
 class NewPostComponent {
   String postText = '';
+
+  void submitNewPost() {
+    print("Post submitted: ${postText}");
+  }
 }

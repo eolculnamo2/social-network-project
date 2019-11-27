@@ -1,4 +1,5 @@
-<div>
-  <h3>New Post</h3>
-  <textarea [(ngModel)]="postText"></textarea>
+<div class="new-post-wrap">
+  <h3 class="new-post-header">Create New Post</h3>
+  <textarea class="new-post-textarea" placeholder="Write your new status here" [(ngModel)]="postText"></textarea>
+  <material-button (trigger)="submitNewPost()" class="new-post-submit-btn">Create Post</material-button>
 </div>
