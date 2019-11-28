@@ -1,0 +1,35 @@
+.post-wrap {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .2);
+  margin-bottom: 1.5em;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  overflow: hidden;
+}
+
+.post-bottom-bar {
+  background-color: #dadada;
+  font-size: .65em;
+  color: #777;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .75em 1em;
+}
+
+.post-sub-group-bottom {
+  display: flex;
+}
+
+.post-content {
+  padding: .5em;
+}
+
+.post-show-comments {
+  margin-right: .5em;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #333;
+  }
+}

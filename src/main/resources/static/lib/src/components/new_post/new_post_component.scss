@@ -5,6 +5,7 @@
   margin: auto;
   max-width: 50%;
   border: 1px solid #dadada;
+  box-sizing: border-box;
 }
 
 .new-post-textarea {
@@ -25,4 +26,9 @@
   color: white;
   margin-top: .5em;
   font-size: .75em;
+}
+
+.new-post-actions-wrap {
+  display: flex;
+  justify-content: flex-end;
 }

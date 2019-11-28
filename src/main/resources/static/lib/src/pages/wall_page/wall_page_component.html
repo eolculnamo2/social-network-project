@@ -1,6 +1,9 @@
 <div class="wall-page-wrap">
   <new-post></new-post>
-  <ul *ngFor="let item of items; let i = index">
-    <li></li>
+  <ul class="wall-page-posts-wrap">
+    <li *ngFor="let item of items; let i = index">
+      <post-component [(postText)]="item.postText" [date]="item.date" [owner]="item.owner" [comments]="item.comments" [likes]="item.likes">
+      </post-component>
+    </li>
   </ul>
 </div>

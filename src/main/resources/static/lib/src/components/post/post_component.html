@@ -1,0 +1,17 @@
+<div class="post-wrap">
+  <div class="post-content">
+    <div>{{ owner }}</div>
+    <div>{{ postText }}</div>
+  </div>
+  <div class="post-bottom-bar">
+    <div>{{ date }}</div>
+    <div class="post-sub-group-bottom">
+      <div class="post-show-comments" (click)="toggleShowComments()">Show Comments</div>
+      <div>Likes: {{ likes }}</div>
+    </div>
+  </div>
+  <ul *ngIf="showComments">
+    <li>Comment 1</li>
+    <li>Comment 2</li>
+  </ul>
+</div>
