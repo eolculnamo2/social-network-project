@@ -33,3 +33,28 @@
     color: #333;
   }
 }
+
+.post-owner {
+  font-size: .8em;
+  border-bottom: 1px dashed #dadada;
+  padding: .25em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-text-content {
+  margin: 1em 0;
+}
+
+.post-action {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100px;
+  color: #4285f4;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .9;
+  }
+}

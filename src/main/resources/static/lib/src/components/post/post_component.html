@@ -1,7 +1,13 @@
 <div class="post-wrap">
   <div class="post-content">
-    <div>{{ owner }}</div>
-    <div>{{ postText }}</div>
+    <div class="post-owner">
+      <div>{{ owner }}</div>
+      <div class="post-action">
+        <div>Like</div>
+        <div>Comment</div>
+      </div>
+    </div>
+    <div class="post-text-content">{{ postText }}</div>
   </div>
   <div class="post-bottom-bar">
     <div>{{ date }}</div>
