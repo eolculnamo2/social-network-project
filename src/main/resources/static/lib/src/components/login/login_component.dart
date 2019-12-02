@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:angular/angular.dart';
 import 'package:angular_components/angular_components.dart';
+import 'package:templates/src/objects/LoginBody.dart';
+import 'package:templates/src/services/auth_service.dart';
 import 'package:templates/src/store/user_store.dart';
 
 @Component(
@@ -10,19 +12,21 @@ import 'package:templates/src/store/user_store.dart';
     templateUrl: 'login_component.html',
     styleUrls: ['login_component.css'],
     directives: [MaterialInputComponent, MaterialButtonBase, MaterialButtonComponent, materialInputDirectives],
-    providers: [UserStore])
+    providers: [UserStore, AuthService])
 class LoginComponent {
   String username = '';
   String password = '';
   UserStore _userStore;
+  AuthService _authService;
 
   // https://angulardart.dev/guide/template-syntax#custom-events
   final goToRegisterStream = StreamController<bool>();
   @Output()
   Stream<bool> get goToRegister => goToRegisterStream.stream;
 
-  LoginComponent(UserStore userStore) {
-    this._userStore = userStore;
+  LoginComponent(UserStore userStore, AuthService authService) {
+    _userStore = userStore;
+    _authService = authService;
   }
 
   void login() async {
@@ -31,15 +35,9 @@ class LoginComponent {
       return;
     }
 
-    var payload = {"username": username, "password": password};
-    var res = await http.post("/authenticate/login",
-        headers: {
-          'Content-type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: json.encode(payload));
-    var resJson = json.decode(res.body);
-    _userStore.setUsername(resJson["username"]);
+    String user = await _authService.login(LoginBody(username, password));
+    _userStore.setUsername(user);
+    print(_userStore.getUsername());
   }
 
   void register() => goToRegisterStream.add(false);

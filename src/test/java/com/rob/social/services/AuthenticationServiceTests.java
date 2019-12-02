@@ -12,13 +12,7 @@ public class AuthenticationServiceTests {
 
   @BeforeEach
   public void setup() {
-    authenticationService = new AuthenticationService();
-  }
-
-  @Test
-  public void handleLoginReturnsCorrectDTO() {
-    UserResponseDTO userResponseDTO = authenticationService.handleLogin();
-    assertEquals(userResponseDTO.getUsername(), "RobUser123");
+    //authenticationService = new AuthenticationService();
   }
 
 }
