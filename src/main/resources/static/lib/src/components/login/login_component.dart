@@ -29,15 +29,12 @@ class LoginComponent {
     _authService = authService;
   }
 
-  void login() async {
+  void login() {
     if (username.length == 0 || password.length == 0) {
       print("username and password required");
       return;
     }
-
-    String user = await _authService.login(LoginBody(username, password));
-    _userStore.setUsername(user);
-    print(_userStore.getUsername());
+    _authService.login(LoginBody(username, password));
   }
 
   void register() => goToRegisterStream.add(false);

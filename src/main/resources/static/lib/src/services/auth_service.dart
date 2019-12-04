@@ -25,15 +25,13 @@ class AuthService {
     return resJson['username'];
   }
 
-  Future<String> login(LoginBody body) async {
-    var payload = {"username": body.username, "password": body.password};
-    var res = await http.post("/auth/login",
+  void login(LoginBody body) {
+    String payload = Uri.encodeComponent("j_username") + '=' + Uri.encodeComponent(body.username)+"&"+Uri.encodeComponent("j_password") + '=' + Uri.encodeComponent(body.password);
+   // var payload = {"username": body.username, "password": body.password};
+    http.post("/auth/login",
         headers: {
-          'Content-type': 'application/json',
-          'Accept': 'application/json',
+          'Content-type': 'application/x-www-form-urlencoded'
         },
-        body: json.encode(payload));
-    var resJson = json.decode(res.body);
-    return resJson["username"];
+        body: payload);
   }
 }

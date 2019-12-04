@@ -2,6 +2,7 @@ package com.rob.social.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class User {
 
   public User(String username, String password, String email, String firstName, String lastName, String photo) {
     this.username = username;
-    this.password = password;
+    this.password = "{bcrypt}"+new BCryptPasswordEncoder().encode(password);
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;

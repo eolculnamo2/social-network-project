@@ -8,19 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 
 @Repository
-public class AuthenticationDAO {
+public class AuthenticationDAO implements IAuthenticationDAO {
   private EntityManager entityManager;
 
   public AuthenticationDAO(EntityManager entityManager) {
     this.entityManager = entityManager;
   }
 
+  @Override
   @Transactional
   public void createOrUpdateUser(User user) {
     Session currentSession = entityManager.unwrap(Session.class);
     currentSession.saveOrUpdate(user);
   }
 
+  @Override
   @Transactional
   public User getUserByUsername(String username) {
     Session session = entityManager.unwrap(Session.class);
