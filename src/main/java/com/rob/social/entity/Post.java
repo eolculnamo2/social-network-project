@@ -1,9 +1,8 @@
 package com.rob.social.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "post")
@@ -20,6 +19,11 @@ public class Post {
 
   @Column(name = "likes")
   private int likes;
+
+  @ManyToOne
+  @JoinColumn(name = "user_key")
+  @JsonBackReference
+  private User author;
 
   public Post() { }
 
@@ -59,5 +63,13 @@ public class Post {
 
   public void setLikes(int likes) {
     this.likes = likes;
+  }
+
+  public User getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(User author) {
+    this.author = author;
   }
 }

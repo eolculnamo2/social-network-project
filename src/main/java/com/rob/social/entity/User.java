@@ -1,8 +1,11 @@
 package com.rob.social.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -34,6 +37,18 @@ public class User {
   @Column(table = "authorities")
   private String authority;
 
+  @OneToMany(mappedBy="owner", cascade={CascadeType.ALL})
+  @JsonManagedReference
+  private List<Conversation> conversations;
+
+  @OneToMany(mappedBy="user", cascade={CascadeType.ALL})
+  @JsonManagedReference
+  private List<Friend> friends;
+
+  @OneToMany(mappedBy="author", cascade={CascadeType.ALL})
+  @JsonManagedReference
+  private List<Post> posts;
+
   public User() {}
 
   public User(String username, String password, String email, String firstName, String lastName, String photo) {
@@ -43,6 +58,30 @@ public class User {
     this.firstName = firstName;
     this.lastName = lastName;
     this.photo = photo;
+  }
+
+  public void addPost(Post post) {
+    if(posts == null) {
+      posts = new ArrayList<>();
+    }
+    posts.add(post);
+    post.setAuthor(this);
+  }
+
+  public void addFriend(Friend friend) {
+    if(friends == null) {
+      friends = new ArrayList<>();
+    }
+    friends.add(friend);
+    friend.setUser(this);
+  }
+
+  public void addConversation(Conversation conversation) {
+    if(conversations == null) {
+      conversations = new ArrayList<>();
+    }
+    conversations.add(conversation);
+    conversation.setOwner(this);
   }
 
   public String getUsername() {
@@ -107,5 +146,29 @@ public class User {
 
   public void setAuthority(String authority) {
     this.authority = authority;
+  }
+
+  public List<Conversation> getConversations() {
+    return conversations;
+  }
+
+  public void setConversations(List<Conversation> conversations) {
+    this.conversations = conversations;
+  }
+
+  public List<Friend> getFriends() {
+    return friends;
+  }
+
+  public void setFriends(List<Friend> friends) {
+    this.friends = friends;
+  }
+
+  public List<Post> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(List<Post> posts) {
+    this.posts = posts;
   }
 }
